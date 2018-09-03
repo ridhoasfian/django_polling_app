@@ -7,7 +7,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Count
 import datetime
 
-# Create your views here.
+# Create your views here. bleh bleh bleh
 @login_required
 def list(request):
     poll = Poll.objects.all()
