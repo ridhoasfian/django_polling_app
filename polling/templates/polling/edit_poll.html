@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Poll</title>
+  </head>
+  <body>
+    <h1>Edit Poll</h1>
+    <hr>
+    <form method="POST">
+      {% csrf_token %}
+      judul polling : <br>
+      {{form.text}} <br>
+      <button type="submit" name="button">Simpan Perubahan</button>
+      <a href="{% url 'add_choice' poll.id %}"><button type="button" name="button">tambah pilihan</button></a>
+      <a href="{% url 'delete_poll' poll.id %}"><button type="button" name="button">Delete Polling</button></a>
+    </form>
+    <br>
+
+    <h2>Daftar Pilihan</h2>
+    <ul>
+      {% for pilihan in poll.choice_set.all %}
+        <li><a href="{% url 'edit_choice' pilihan.id %}">Edit</a> - {{pilihan}}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

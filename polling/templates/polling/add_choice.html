@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Add Choice</title>
+  </head>
+  <body>
+    <h1>Add Choice</h1>
+    <hr>
+    <form method="post">
+      {% csrf_token %}
+      Text Pilihan : {{form.choice_text}} <br>
+      <button type="submit" name="button">Simpan Pilihan</button>
+    </form>
+  </body>
+</html>

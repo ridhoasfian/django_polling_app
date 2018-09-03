@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>home</title>
+  </head>
+  <body>
+    {% if request.user.is_authenticated %}
+      <h1><a href="{% url 'logout_user' %}">log out</a></h1>
+      Selamat Datang, {{user.username}}. <br>
+      silahkan melihat <a href="{% url 'list' %}">daftar polling</a> yang ada di website kami.
+    {% else %}
+      <h1><a href="{% url 'login_user' %}">log In</a></h1>
+      Maaf, Anda Belum Login <br>
+      silahkan <a href="{% url 'login_user' %}">login</a> untuk melihat daftar polling kami
+    {% endif %}
+
+  </body>
+</html>

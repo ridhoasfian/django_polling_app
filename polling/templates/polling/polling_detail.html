@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Polling Detail</title>
+    <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css'%} ">
+    <link rel="stylesheet" href="{% static '/css/styles.css'%} ">
+    <link rel="stylesheet" href="{% static '/css/Google-Style-Login.css'%} ">
+  </head>
+  <body>
+    {% if messages %}
+      {% for pesan in messages %}
+        <h3>maaf, {{pesan}}</h3>
+      {% endfor %}
+    {% endif %}
+    <ul>
+      {{poll_detail}} - <b>{{poll_detail.jumlah_pemilih}} partisipan </b>
+      <form action="{% url 'poll_vote' poll_detail.id %}" method="POST">
+        {% csrf_token %}
+        {% for choice in poll_detail.choice_set.all %}
+          <br>
+          <input type="radio" name="pilihan" value="{{choice.id}}"> {{choice.choice_text}}
+        {% endfor %}
+        <br>
+        <button type="submit" name="button" {% if not user_bisa_voting %} disabled {% endif %}>Ambil Suara !</button>
+      </form>
+
+      {% if user_bisa_voting %}
+        voting untuk melihat hasil
+      {% else %}
+        {% for choice_dict in hasil %}
+        {{choice_dict.choice_text}}
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width:{{choice_dict.persentase}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+            {{choice_dict.persentase}}%
+          </div>
+        </div>
+        {% endfor %}
+      {% endif %}
+    </ul>
+  </body>
+</html>

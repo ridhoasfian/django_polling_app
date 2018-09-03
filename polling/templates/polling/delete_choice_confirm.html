@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Konfirmasi Hapus</title>
+  </head>
+  <body>
+    <h1>Konfirmasi Delete Choice</h1>
+    <hr>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" name="button">YA, Saya yakin ingin menghapus pilihan ??</button>
+    </form>
+  </body>
+</html>

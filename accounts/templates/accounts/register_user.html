@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registrasi</title>
+    <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static '/css/styles.css'%}">
+    <link rel="stylesheet" href="{% static '/css/Pretty-Registration-Form.css'%}">
+</head>
+
+<body>
+    <div class="row register-form">
+        <div class="col-md-8 col-md-offset-2">
+            <form class="form-horizontal custom-form" method="POST">
+                {% csrf_token %}
+                <h1>Register Form</h1>
+                <div class="form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="control-label" for="name-input-field">Username </label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        {{form.username}}
+                        {{form.username.errors}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="control-label" for="email-input-field">Email </label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        {{form.email}}
+                        {{form.email.errors}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="control-label" for="pawssword-input-field">Password </label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        {{form.password}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="control-label" for="repeat-pawssword-input-field">Repeat Password </label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        {{form.password_confirm}}
+                        {{form.password_confirm.errors}}
+                    </div>
+                </div>
+                <div class="form-group">
+
+                </div>
+                <button class="btn btn-default submit-button" type="submit">Registrasi User</button>
+            </form>
+        </div>
+    </div>
+    <script src="{% static '/js/jquery.min.js' %}"></script>
+    <script src="{% static '/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>

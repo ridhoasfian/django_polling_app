@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Polling List</title>
+  </head>
+  <body>
+    <h1>Polling List</h1>
+    <ul>
+      <a href="?abjad=True">{% if 'abjad' in request.GET %} <i>A-Z</i> {% else %} <b>A-Z</b> {% endif %}</a> ||||
+      <a href="?pub_date=True">{% if 'pub_date' in request.GET %} <i> Publish Date </i> {% else %} <b> Publish Date </b> {% endif %}</a> ||||
+      <a href="?jumlah_pemilih=True">{% if 'jumlah_pemilih' in request.GET %} <i> Jumlah Pemilih </i> {% else %} <b> Jumlah Pemilih </b> {% endif %}</a> ||||
+
+      <b><a href="{% url 'add_poll' %}">Tambahkan Polling</a></b>
+      <form method="GET">
+          {{form.cari}}
+          <button type="submit" name="button">CARI</button>
+      </form>
+
+      <hr>
+      {% for pesan in messages %}
+        {{pesan}}
+      {% endfor %}
+      {% for poll in poll %}
+        <li>
+          <a href="{% url 'poll_detail' poll.id %}">{{poll}}</a>
+          {% if request.user == poll.owner %}
+            <a href="{% url 'edit_poll' poll.id %}">Edit</a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+
+    <div class="pagination">
+      <span class="step-links">
+        {% if poll.has_previous %}
+          <a href="?page=1&{{params}}">&laquo; first</a>
+          <a href="?page={{ poll.previous_page_number }}&{{params}}">previous</a>
+        {% endif %}
+
+        <span class="current">
+          Page {{ poll.number }} of {{ poll.paginator.num_pages }}.
+        </span>
+
+        {% if poll.has_next %}
+          <a href="?page={{ poll.next_page_number }}&{{params}}">next</a>
+          <a href="?page={{ poll.paginator.num_pages }}&{{params}}">last &raquo;</a>
+        {% endif %}
+      </span>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Choice</title>
+  </head>
+  <body>
+    <h1>Edit Choice</h1>
+    <form method="post">
+      {% csrf_token %}
+      Choice : {{form.choice_text}}
+      <button type="submit" name="button">Edit Choice</button> ||||| <a href="{% url 'delete_choice' choice.id %}"><button type="button" name="button">Hapus Choice</button></a>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Add Poll</title>
+  </head>
+  <body>
+    <h1>Tambahkan Poll</h1>
+    <hr>
+    <form class="" method="post">
+      {% csrf_token %}
+      judul Polling : {{form.text}} <br>
+      pilihan 1 : {{form.pilihan1}} <br>
+      pilihan 2 : {{form.pilihan2}} <br>
+      <button type="submit" name="button">Simpan</button>
+    </form>
+  </body>
+</html>

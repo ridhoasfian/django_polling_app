@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Hasil Polling</title>
+  </head>
+  <body>
+    <h1>Hasil Polling</h1>
+    <hr>
+    jumlah partisipan pemilih = {{poll.jumlah_pemilih}} <br>
+    {{ poll }}
+    <ul>
+      {% for choice in poll.choice_set.all %}
+        <li>{{choice}} == {{choice.jumlah_voting}} votes</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
