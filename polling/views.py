@@ -29,9 +29,9 @@ def list(request):
     else:
         form = CariPollForm()
 
-    paginator = Paginator(poll, 3)
+    paginato = Paginator(poll, 3)
     page = request.GET.get('page')
-    poll = paginator.get_page(page)
+    poll = paginato.get_page(page)
 
     get_dict_copy = request.GET.copy()
     params = get_dict_copy.pop('page', True) and get_dict_copy.urlencode()

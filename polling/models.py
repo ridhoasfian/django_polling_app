@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Poll(models.Model):
+    class Meta:
+        ordering = ['-id']
+
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.CharField(max_length=200)
     pub_date = models.DateField()
